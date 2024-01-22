@@ -4,7 +4,7 @@ const Digital = () => {
     return (
 
         <div className="mx-2">
-            <div className='mx-auto max-w-7xl px-4 my-40 pb-20 lg:pb-40 lg:px-8 bg-digital bg-sky rounded-3xl relative'>
+            <div className='mx-auto max-w-7xl px-4 my-40 pb-20 lg:px-8 bg-digital bg-sky rounded-3xl relative'>
                 <div className='grid grid-cols-1 lg:grid-cols-2 my-16'>
 
                     {/* COLUMN-1 */}
@@ -20,7 +20,7 @@ const Digital = () => {
                     {/* COLUMN-2 */}
 
                     <div>
-                        <div className="lg:absolute mencomputer">
+                        <div className="lg:absolute mencomputer mt-10">
                             <Image src="/images/digital/mencomputer.svg" alt="mencomputer" width={815} height={691} />
                         </div>
                     </div>
