@@ -40,6 +40,26 @@ html {
   scroll-behavior: smooth !important;
 }
 
+.z-1{
+  z-index: -1;
+}
+
+.bg-sky{
+  background-color: rgb(3 105 161);
+}
+
+.bg-skybtn{
+  background-color: rgb(12 74 110);
+}
+
+.bg-skybtn:hover{
+  background-color: rgb(8 47 73);
+}
+
+.m180px{
+  margin-bottom: 180px;
+}
+
 .navbar {
   border-bottom: 0.5px solid rgba(196, 196, 196, 0.75);
   max-width: 100%;
@@ -120,7 +140,7 @@ html {
 }
 
 .bg-digital {
-  background-image: url("/images/digital/bg.svg");
+  /* background-image: url("/images/digital/bg.svg"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
