@@ -1,40 +1,11 @@
+import { footerProducts } from "@/app/data/navItems";
 import Image from "next/image";
 import Link from "next/link";
-
-// MIDDLE LINKS DATA
-interface ProductType {
-    id: number;
-    section: string;
-    link: string[];
-}
-
-const products: ProductType[] = [
-    {
-        id: 1,
-        section: "Menu",
-        link: ['Home', 'Popular', 'About', 'Contact'],
-    },
-    {
-        id: 2,
-        section: "Category",
-        link: ['Design', 'Mockup', 'View all', 'Log In']
-    },
-    {
-        id: 3,
-        section: "Pages",
-        link: ['404', 'Instructions', 'License']
-    },
-    {
-        id: 4,
-        section: "Others",
-        link: ['Styleguide', 'Changelog']
-    }
-]
 
 const footer = () => {
     return (
         <div className="bg-black -mt-40" id="first-section">
-            <div className="mx-auto max-w-2xl pt-48 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-2xl pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="mt-24 grid grid-cols-1 gap-y-10 gap-x-16 sm:grid-cols-2 lg:grid-cols-12 xl:gap-x-8">
 
                     {/* COLUMN-1 */}
@@ -56,13 +27,13 @@ const footer = () => {
 
                     {/* CLOUMN-2/3 */}
 
-                    {products.map((product) => (
-                        <div key={product.id} className="group relative col-span-2">
+                    {footerProducts.map((product) => (
+                        <div key={product.id} className="grid justify-center group relative col-span-4 md:justify-end">
                             <p className="text-white text-xl font-extrabold mb-9">{product.section}</p>
                             <ul>
-                                {product.link.map((link: string, index: number) => (
+                                {product.link.map((link, index: number) => (
                                     <li key={index} className='mb-5'>
-                                        <Link href="/" className="text-white text-lg font-normal mb-6 space-links">{link}</Link>
+                                        <Link href={link.href} className="text-white text-lg font-normal mb-6 space-links">{link.name}</Link>
                                     </li>
                                 ))}
                             </ul>

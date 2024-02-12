@@ -2,20 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Contactusform from "./Contactus";
 import { modelPropInterface } from "@/app/interfaces/modalProp.interface";
-
-interface NavigationItem {
-  name: string;
-  href: string;
-  current: boolean;
-}
-
-const navigation: NavigationItem[] = [
-  { name: "About Us", href: "#aboutus-section", current: true },
-  { name: "Services", href: "#services-section", current: false },
-  { name: "FAQ", href: "#faq-section", current: false },
-  // { name: 'Blog', href: '#blog-section', current: false },
-  // { name: 'Testimonial', href: '#testimonial-section', current: false },
-];
+import { navigation } from "@/app/data/navItems";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
