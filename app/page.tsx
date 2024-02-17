@@ -23,10 +23,10 @@ export default function Home() {
         setIsOpen={setIsOpen}
         openModal={openModal}
       />
-      <Banner />
+      <Banner openModal={openModal} />
       <Aboutus />
       {/* <Dedicated /> */}
-      <Digital />
+      <Digital openModal={openModal} />
       {/* <Beliefs /> */}
       {/* <Wework /> */}
       <Ourteam />

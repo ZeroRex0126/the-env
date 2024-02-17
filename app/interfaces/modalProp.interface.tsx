@@ -3,3 +3,7 @@ export interface modelPropInterface {
     setIsOpen: (isOpen: boolean) => void;
     openModal: () => void;
   }
+
+  export interface openContactModelInterface {
+    openModal: () => void;
+  }

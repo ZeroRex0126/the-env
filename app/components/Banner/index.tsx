@@ -1,6 +1,7 @@
+import { openContactModelInterface } from "@/app/interfaces/modalProp.interface";
 import Image from "next/image";
 
-const Banner = () => {
+const Banner = ({ openModal }: openContactModelInterface) => {
   return (
     <div
       id="home-section"
@@ -21,14 +22,17 @@ const Banner = () => {
             </h1>
           </div>
           <div className="my-7 text-center lg:text-start">
-            <button className="text-sm md:text-xl font-semibold hover:shadow-xl bg-skybtn text-white py-3 px-6 md:py-5 md:px-14 rounded-full  ">
+            <button
+              className="text-sm md:text-xl font-semibold hover:shadow-xl bg-skybtn text-white py-3 px-6 md:py-5 md:px-14 rounded-full"
+              onClick={openModal}
+            >
               Get Started
             </button>
           </div>
         </div>
 
         {/* COLUMN-2 */}
-    
+
         <div className="lg:-m-24 lg:pt-20 hidden lg:block z-1">
           <Image
             src="/images/banner/banner.svg"
