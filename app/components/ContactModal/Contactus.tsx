@@ -17,31 +17,69 @@ const Contactusform = ({
     message: "",
     phoneNr: "",
   });
+  const [errors, setErrors] = useState({
+    email: "",
+    phoneNr: "",
+  });
+
   const [isValid, setIsValid] = useState(false);
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setInputValues((prevState) => ({ ...prevState, [name]: value }));
+
+    switch (name) {
+      case "email":
+        if (validateEmail(value)) {
+          setErrors((preError) => ({
+            ...preError,
+            [name]: "",
+          }));
+        } else {
+          setErrors((preError) => ({
+            ...preError,
+            [name]: "Please ensure you have entered a correct Email.",
+          }));
+        }
+        break;
+      case "phoneNr":
+        if (validatePhoneNumber(value)) {
+          setErrors((preError) => ({
+            ...preError,
+            [name]: "",
+          }));
+        } else {
+          setErrors((preError) => ({
+            ...preError,
+            [name]: "Please ensure you have entered a correct Phone Number.",
+          }));
+        }
+        break;
+      default:
+        break;
+    }
   };
 
+  useEffect(() => {
+    if (
+      errors.phoneNr === "" &&
+      errors.email === "" &&
+      inputValues.name !== "" &&
+      inputValues.message !== ""
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [inputValues, isValid]);
+
   const handleClick = async () => {
-    console.log(isValid);
     if (isValid) {
       let emailRes = await sendEmail();
       setIsOpen(false);
     }
   };
 
-  useEffect(() => {
-    if (
-      validateEmail(inputValues.email) &&
-      validatePhoneNumber(inputValues.phoneNr)
-    ) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
-  }, [inputValues.email, inputValues.phoneNr]);
   // Validate form
 
   // FORM SUBMIT
@@ -126,6 +164,7 @@ const Contactusform = ({
                         >
                           Your Phone Number
                         </label>
+                        {/* <p className="text-red-500 text-xs italic">Please choose a password.</p> */}
                         <input
                           id="phoneNr"
                           name="phoneNr"
@@ -134,9 +173,14 @@ const Contactusform = ({
                           type="phoneNr"
                           autoComplete="current-password"
                           required
-                          className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                          className={`relative block w-full appearance-none  rounded-md border ${
+                            errors.phoneNr === ""
+                              ? "border-linegrey"
+                              : "border-rose-500"
+                          } px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm`}
                           placeholder="0123456789"
                         />
+                        {errors.phoneNr}
                       </div>
                       <div>
                         <label
@@ -153,7 +197,11 @@ const Contactusform = ({
                           type="email"
                           autoComplete="current-password"
                           required
-                          className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                          className={`relative block w-full appearance-none rounded-md border ${
+                            errors.email === ""
+                              ? "border-linegrey"
+                              : "border-rose-500"
+                          } px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm`}
                           placeholder="xyz@email.com"
                         />
                       </div>
@@ -176,9 +224,7 @@ const Contactusform = ({
                       <button
                         type="submit"
                         onClick={handleClick}
-                        disabled={Object.values(inputValues).some(
-                          (value) => value === ""
-                        )}
+                        disabled={!isValid}
                         className="py-3 px-5 text-sm disabled:opacity-50 font-medium w-full text-center text-white rounded-lg bg-sky focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                       >
                         Send message
