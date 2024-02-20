@@ -2,10 +2,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  modelPropInterface,
-} from "@/app/interfaces/modalProp.interface";
+import { modelPropInterface } from "@/app/interfaces/modalProp.interface";
 import { sendEmail } from "@/app/services/sendEmail";
+import { validateEmail, validatePhoneNumber } from "@/app/services/validations";
 
 const Contactusform = ({
   isOpen,
@@ -16,6 +15,7 @@ const Contactusform = ({
     name: "",
     email: "",
     message: "",
+    phoneNr: "",
   });
   const [isValid, setIsValid] = useState(false);
 
@@ -33,19 +33,16 @@ const Contactusform = ({
   };
 
   useEffect(() => {
-    validateEmail();
-  }, [inputValues.email]);
-  // Validate form
-  const validateEmail = () => {
-    let emailRegex =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!inputValues.email || !emailRegex.test(inputValues.email)) {
+    if (
+      validateEmail(inputValues.email) &&
+      validatePhoneNumber(inputValues.phoneNr)
+    ) {
+      setIsValid(true);
+    } else {
       setIsValid(false);
-      return;
     }
-    setIsValid(true);
-    return;
-  };
+  }, [inputValues.email, inputValues.phoneNr]);
+  // Validate form
 
   // FORM SUBMIT
   const handleSubmit = (event: { preventDefault: () => void }) => {
@@ -120,6 +117,25 @@ const Contactusform = ({
                           required
                           className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                           placeholder="Name..."
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="phoneNr"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Your Phone Number
+                        </label>
+                        <input
+                          id="phoneNr"
+                          name="phoneNr"
+                          value={inputValues.phoneNr}
+                          onChange={handleChange}
+                          type="phoneNr"
+                          autoComplete="current-password"
+                          required
+                          className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                          placeholder="0123456789"
                         />
                       </div>
                       <div>
