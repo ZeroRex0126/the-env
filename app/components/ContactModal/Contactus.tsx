@@ -4,7 +4,6 @@ import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   modelPropInterface,
-  modelContents,
 } from "@/app/interfaces/modalProp.interface";
 import { sendEmail } from "@/app/services/sendEmail";
 
@@ -34,10 +33,10 @@ const Contactusform = ({
   };
 
   useEffect(() => {
-    validateForm();
-  }, [inputValues]);
+    validateEmail();
+  }, [inputValues.email]);
   // Validate form
-  const validateForm = () => {
+  const validateEmail = () => {
     let emailRegex =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!inputValues.email || !emailRegex.test(inputValues.email)) {

@@ -7,9 +7,3 @@ export interface modelPropInterface {
 export interface openContactModelInterface {
   openModal: () => void;
 }
-
-export interface modelContents {
-  name: string;
-  email: string;
-  message: string;
-}
