@@ -6,7 +6,7 @@ import Digital from "./components/Digital/index";
 import FAQ from "./components/FAQ/index";
 import Featured from "./components/Featured/index";
 import Footer from "./components/Footer/index";
-import Contactusform from "./components/Navbar/Contactus";
+import Contactusform from "./components/ContactModal/Contactus";
 import Navbar from "./components/Navbar/index";
 import Ourteam from "./components/Ourteam/index";
 

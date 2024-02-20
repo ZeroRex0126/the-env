@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Contactusform from "./Contactus";
+import Contactusform from "../ContactModal/Contactus";
 import { modelPropInterface } from "@/app/interfaces/modalProp.interface";
 import { navigation } from "@/app/data/navItems";
 

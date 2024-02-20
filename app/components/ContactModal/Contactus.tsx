@@ -1,15 +1,19 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { modelPropInterface } from "@/app/interfaces/modalProp.interface";
+import { sendEmail } from "@/app/services/sendEmail";
 
-
-const Contactusform = ({ isOpen, setIsOpen, openModal }: modelPropInterface) => {
+const Contactusform = ({
+  isOpen,
+  setIsOpen,
+  openModal,
+}: modelPropInterface) => {
   const [inputValues, setInputValues] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
@@ -17,11 +21,34 @@ const Contactusform = ({ isOpen, setIsOpen, openModal }: modelPropInterface) => 
     setInputValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleClick = () => {
-    alert(
-      `Name: ${inputValues.input1}, Email-address: ${inputValues.input2}, Message: ${inputValues.input3}`
-    );
+  const handleClick = async () => {
+    let emailRes = await sendEmail();
     setIsOpen(false);
+  };
+
+  useEffect(() => {
+    validateForm();
+  }, [inputValues]);
+  // Validate form
+  const validateForm = () => {
+    let errors = {};
+
+    if (!inputValues.name) {
+      // errors.name = "Name is required.";
+    }
+
+    if (!inputValues.email) {
+      // errors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(inputValues.email)) {
+      // errors.email = "Email is invalid.";
+    }
+
+    if (!inputValues.message) {
+      // errors.password = "Password is required.";
+    }
+
+    // setErrors(errors);
+    // setIsFormValid(Object.keys(errors).length === 0);
   };
 
   // FORM SUBMIT
@@ -111,8 +138,8 @@ const Contactusform = ({ isOpen, setIsOpen, openModal }: modelPropInterface) => 
                         </label>
                         <input
                           id="text"
-                          name="input1"
-                          value={inputValues.input1}
+                          name="name"
+                          value={inputValues.name}
                           onChange={handleChange}
                           type="text"
                           autoComplete="current-password"
@@ -130,8 +157,8 @@ const Contactusform = ({ isOpen, setIsOpen, openModal }: modelPropInterface) => 
                         </label>
                         <input
                           id="email"
-                          name="input2"
-                          value={inputValues.input2}
+                          name="email"
+                          value={inputValues.email}
                           onChange={handleChange}
                           type="email"
                           autoComplete="current-password"
@@ -149,8 +176,8 @@ const Contactusform = ({ isOpen, setIsOpen, openModal }: modelPropInterface) => 
                         </label>
                         <textarea
                           id="message"
-                          name="input3"
-                          value={inputValues.input3}
+                          name="Message"
+                          value={inputValues.message}
                           onChange={handleChange}
                           className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                           placeholder="Leave a comment..."
