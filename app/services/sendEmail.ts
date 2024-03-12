@@ -1,12 +1,18 @@
-export function sendEmail() {
+import { emailBody } from "../interfaces/email.interface";
+
+export function sendEmail({ name, email, message, phoneNr }: emailBody) {
   const apiEndpoint = "/api/email";
 
   return fetch(apiEndpoint, {
     method: "POST",
     body: JSON.stringify({
       emails: ["te.theenvelope@gmail.com"],
-      subject: "Testing SUbject",
-      message: "<h1>lets do it</h1>",
+      subject: `Contact: ${name} is trying to contact you`,
+      message: `<h1>Message from: ${name}</h1>
+      <p>Phone Number: ${phoneNr}</p>
+      <p>Email Address: ${email}</p>
+      <p>Message: ${message}</p>
+      `,
     }),
   })
     .then((res) => res.json())

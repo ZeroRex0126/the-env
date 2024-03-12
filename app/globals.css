@@ -414,3 +414,6 @@ html {
 .border-rose-500 {
   border-color: rgb(244 63 94);
 }
+.text-rose {
+  color: rgb(244 63 94);
+}

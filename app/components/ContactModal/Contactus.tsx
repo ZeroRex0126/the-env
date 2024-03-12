@@ -23,6 +23,8 @@ const Contactusform = ({
   });
 
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
@@ -75,8 +77,19 @@ const Contactusform = ({
 
   const handleClick = async () => {
     if (isValid) {
-      let emailRes = await sendEmail();
-      setIsOpen(false);
+      setIsLoading(true);
+      let emailRes = await sendEmail(inputValues);
+      if (emailRes) {
+        setIsLoading(false);
+        setIsOpen(false);
+        if (errorMessage !== "") {
+          setErrorMessage("");
+        }
+      } else {
+        setErrorMessage(
+          "An error has occured while trying to contact The Envelope, Please use contact details."
+        );
+      }
     }
   };
 
@@ -221,13 +234,27 @@ const Contactusform = ({
                           placeholder="Leave a comment..."
                         ></textarea>
                       </div>
+                      <p className="mb-8 lg:mb-16 mt-8 font-light text-rose sm:text-xl">
+                        {errorMessage}
+                      </p>
                       <button
                         type="submit"
                         onClick={handleClick}
                         disabled={!isValid}
                         className="py-3 px-5 text-sm disabled:opacity-50 font-medium w-full text-center text-white rounded-lg bg-sky focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                       >
-                        Send message
+                        {isLoading ? (
+                          <div
+                            className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+                            role="status"
+                          >
+                            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                              Loading...
+                            </span>
+                          </div>
+                        ) : (
+                          <>Send message</>
+                        )}
                       </button>
                     </form>
                   </div>
