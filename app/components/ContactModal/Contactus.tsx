@@ -80,6 +80,12 @@ const Contactusform = ({
       setIsLoading(true);
       let emailRes = await sendEmail(inputValues);
       if (emailRes) {
+        setInputValues({
+          name: "",
+          email: "",
+          message: "",
+          phoneNr: "",
+        });
         setIsLoading(false);
         setIsOpen(false);
         if (errorMessage !== "") {
