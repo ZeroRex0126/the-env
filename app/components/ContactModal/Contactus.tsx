@@ -40,7 +40,7 @@ const Contactusform = ({
         } else {
           setErrors((preError) => ({
             ...preError,
-            [name]: "Please ensure you have entered a correct Email.",
+            [name]: "Please enter a valid Email.",
           }));
         }
         break;
@@ -53,7 +53,7 @@ const Contactusform = ({
         } else {
           setErrors((preError) => ({
             ...preError,
-            [name]: "Please ensure you have entered a correct Phone Number.",
+            [name]: "Please enter a valid Phone Number.",
           }));
         }
         break;
@@ -182,8 +182,12 @@ const Contactusform = ({
                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                           Your Phone Number
+                          <span className="text-rose text-xs italic">
+                            {" "}
+                            {errors.phoneNr}
+                          </span>
                         </label>
-                        {/* <p className="text-red-500 text-xs italic">Please choose a password.</p> */}
+
                         <input
                           id="phoneNr"
                           name="phoneNr"
@@ -199,7 +203,6 @@ const Contactusform = ({
                           } px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm`}
                           placeholder="0123456789"
                         />
-                        {errors.phoneNr}
                       </div>
                       <div>
                         <label
@@ -207,7 +210,12 @@ const Contactusform = ({
                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                           Your email
+                          <span className="text-rose text-xs italic">
+                            {" "}
+                            {errors.email}
+                          </span>
                         </label>
+
                         <input
                           id="email"
                           name="email"

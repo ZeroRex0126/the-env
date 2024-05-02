@@ -12,5 +12,5 @@ export async function getWebDatas() {
     throw new Error(data.message || "Something went wrong!");
   }
 
-  return data;
+  return data[0];
 }

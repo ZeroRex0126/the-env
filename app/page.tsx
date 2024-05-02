@@ -14,21 +14,20 @@ import { getWebDatas } from "./services/web-utils";
 
 export default function Home() {
   let [isOpen, setIsOpen] = useState(false);
-  let [webData, setWebData] = useState({});
+  let [webData, setWebData] = useState({ featureWorks: [],faq:[] });
 
   async function getWebData() {
-    let webdata = await getWebDatas();
-    setWebData(webdata);
+    setWebData(await getWebDatas());
   }
 
   useEffect(() => {
-    getWebData()
+    getWebData();
   }, []);
 
   const openModal = () => {
-    console.log(webData);
     setIsOpen(true);
   };
+
   return (
     <main>
       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} openModal={openModal} />
@@ -45,9 +44,9 @@ export default function Home() {
       {/* <Beliefs /> */}
       {/* <Wework /> */}
       <Ourteam />
-      <Featured />
+      <Featured featureWorks={webData.featureWorks} />
       {/* <Manage /> */}
-      <FAQ />
+      <FAQ faq={webData.faq}/>
       {/* <Testimonials /> */}
       {/* <Articles /> */}
       {/* <Joinus /> */}

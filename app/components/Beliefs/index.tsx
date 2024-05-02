@@ -22,7 +22,7 @@ const Beliefs = () => {
                     <h3 className="text-4xl sm:text-65xl font-bold text-black leading-snug mb-5 text-center sm:text-start"><span className="text-blue">Build</span> that great idea that you have.</h3>
                     <h5 className="bluish pt-2 mb-5 text-center sm:text-start">Quis ipsum suspendisse ultrices gravida risus commodo viverra maecenas accumsan lacus vel facilisis.</h5>
                     <div className="text-center sm:text-start">
-                        <button className="text-xl py-5 px-14 mt-5 font-semibold text-white rounded-full bg-sky border border-blue  ">Learn more</button>
+                        <button className="text-xl py-5 px-14 mt-5 font-semibold text-white rounded-full bg-sky border border-blue">Learn more</button>
                     </div>
                 </div>
 
