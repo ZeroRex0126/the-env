@@ -111,7 +111,7 @@ export default function Featured({ featureWorks }: {featureWorks:featureWorkInte
   return (
     
     <div
-      id="services-section"
+      id="featured-section"
       className="bg-bgblue py-20 marginFeature bg-featured"
     >
       <div className="mx-auto max-w-7xl sm:py-4 lg:px-8 ">

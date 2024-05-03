@@ -32,9 +32,9 @@ const Aboutdata: datatype[] = [
   // },
 ];
 
-const Aboutus = () => {
+const Services = () => {
   return (
-    <div id="aboutus-section">
+    <div id="services-section">
       <div className="mx-auto max-w-7xl px-4 py-24 my-32 lg:px-10 bg-lightgrey rounded-3xl relative">
         <Image
           src="/images/aboutus/dots.svg"
@@ -83,4 +83,4 @@ const Aboutus = () => {
   );
 };
 
-export default Aboutus;
+export default Services;

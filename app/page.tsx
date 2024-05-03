@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Aboutus from "./components/Aboutus/index";
 import Banner from "./components/Banner/index";
 import Digital from "./components/Digital/index";
 import FAQ from "./components/FAQ/index";
@@ -11,10 +10,11 @@ import Navbar from "./components/Navbar/index";
 import Ourteam from "./components/Ourteam/index";
 import MessageDialog from "./messageDialog/messageDialog";
 import { getWebDatas } from "./services/web-utils";
+import Services from "./components/Services";
 
 export default function Home() {
   let [isOpen, setIsOpen] = useState(false);
-  let [webData, setWebData] = useState({ featureWorks: [],faq:[] });
+  let [webData, setWebData] = useState({ featureWorks: [], faq: [] });
 
   async function getWebData() {
     setWebData(await getWebDatas());
@@ -38,15 +38,15 @@ export default function Home() {
         openModal={openModal}
       />
       <Banner openModal={openModal} />
-      <Aboutus />
       {/* <Dedicated /> */}
+      <Ourteam />
       <Digital openModal={openModal} />
+      <Services />
       {/* <Beliefs /> */}
       {/* <Wework /> */}
-      <Ourteam />
       <Featured featureWorks={webData.featureWorks} />
       {/* <Manage /> */}
-      <FAQ faq={webData.faq}/>
+      <FAQ faq={webData.faq} />
       {/* <Testimonials /> */}
       {/* <Articles /> */}
       {/* <Joinus /> */}
