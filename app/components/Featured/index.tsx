@@ -2,7 +2,7 @@
 import Slider from "react-slick";
 import React, { Component } from "react";
 import Image from "next/image";
-import {  featureWorkInterface } from "@/app/interfaces/webData.interface";
+import {  featureWorkDat } from "@/app/interfaces/webData.interface";
 
 // CAROUSEL DATA
 
@@ -70,7 +70,7 @@ function SamplePrevArrow(props: { className: any; style: any; onClick: any }) {
   );
 }
 
-export default function Featured({ featureWorks }: {featureWorks:featureWorkInterface[]}) {
+export default function Featured({ featureWorks }: {featureWorks:featureWorkDat[]}) {
   const settings = {
     dots: false,
     infinite: true,

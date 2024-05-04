@@ -1,9 +1,9 @@
 "use client";
-import { faq } from "@/app/interfaces/webData.interface";
+import { faqDat } from "@/app/interfaces/webData.interface";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
-const FAQ = ({ faq }: { faq: faq[] }) => {
+const FAQ = ({ faq }: { faq: faqDat[] }) => {
   return (
     <div
       id="faq-section"

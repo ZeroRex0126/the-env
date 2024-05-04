@@ -1,38 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import { serviceDat } from "@/app/interfaces/webData.interface";
 
-interface datatype {
-  heading: string;
-  imgSrc: string;
-  paragraph: string;
-  link: string;
-}
-
-const Aboutdata: datatype[] = [
-  {
-    heading: "About us.",
-    imgSrc: "/images/aboutus/imgOne.svg",
-    paragraph:
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem",
-    link: "Learn more",
-  },
-  {
-    heading: "Services.",
-    imgSrc: "/images/aboutus/imgTwo.svg",
-    paragraph:
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem",
-    link: "Learn more",
-  },
-  // {
-  //     heading: "Our Works.",
-  //     imgSrc: "/images/aboutus/imgThree.svg",
-  //     paragraph: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem',
-  //     link: 'Learn more'
-  // },
-];
-
-const Services = () => {
+const Services = ({serviceDat}:{serviceDat:serviceDat[]}) => {
   return (
     <div id="services-section">
       <div className="mx-auto max-w-7xl px-4 py-24 my-32 lg:px-10 bg-lightgrey rounded-3xl relative">
@@ -50,7 +21,7 @@ const Services = () => {
           Know more about us.
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-16 gap-x-16 lg:gap-x-32">
-          {Aboutdata.map((item, i) => (
+          {serviceDat.map((item, i) => (
             <div
               key={i}
               className="hover:bg-navyblue bg-white rounded-3xl mt-16 pt-10 pl-8 pb-10 pr-6 shadow-xl group"
@@ -58,23 +29,20 @@ const Services = () => {
               <h4 className="text-4xl font-semibold  text-black mb-5 group-hover:text-white">
                 {item.heading}
               </h4>
-              <Image
-                src={item.imgSrc}
-                alt={item.imgSrc}
-                width={100}
-                height={100}
-                className="mb-5"
+              <div
+                className="icon"
+                dangerouslySetInnerHTML={{ __html: item.imgSrc }}
               />
               <h4 className="text-lg font-normal text-black group-hover:text-offwhite mb-5">
                 {item.paragraph}
               </h4>
-              <Link
+              {/* <Link
                 href="#"
                 className="text-lg font-semibold group-hover:text-white text-blue hover-underline"
               >
                 {item.link}
                 <ChevronRightIcon width={20} height={20} />
-              </Link>
+              </Link> */}
             </div>
           ))}
         </div>
