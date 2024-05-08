@@ -92,7 +92,9 @@ const Contactusform = ({
         if (errorMessage !== "") {
           setErrorMessage("");
         }
-        toggleModal();
+        if(toggleModal){
+          toggleModal();
+        }
       } else {
         setErrorMessage(
           "An error has occured while trying to contact The Envelope, Please use contact details."

@@ -62,7 +62,7 @@ const Navbar = ( { isOpen, setIsOpen, openModal }: modelPropInterface) => {
                     <button
                       type="button"
                       className="justify-end text-xl font-semibold bg-transparent py-4 px-6 lg:px-12 navbutton rounded-full hover:bg-navyblue hover:text-white"
-                      onClick={openModal}
+                      onClick={()=>{openModal()}}
                     >
                       Contact Us
                     </button>
@@ -86,7 +86,7 @@ const Navbar = ( { isOpen, setIsOpen, openModal }: modelPropInterface) => {
             {/* DRAWER LINKS DATA */}
 
             <Drawer isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
-              <Drawerdata isOpen={isOpen} setIsOpen={setIsOpen} openModal={openModal}/>
+              <Drawerdata isOpen={isOpen} setIsOpen={setIsOpen} openModal={()=>{openModal()}}/>
             </Drawer>
           </div>
         </div>

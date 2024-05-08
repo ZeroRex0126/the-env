@@ -34,7 +34,7 @@ const Data = ({ isOpen, setIsOpen, openModal }: modelPropInterface) => {
               <button
                 type="button"
                 className="bg-skybtn w-full hover:text-white text-white border border-purple font-medium py-2 px-4 rounded"
-                onClick={openModal}
+                onClick={()=>{openModal()}}
               >
                 Contact Us
               </button>

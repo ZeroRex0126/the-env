@@ -1,8 +1,8 @@
 export interface modelPropInterface {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  toggleModal: (messageProp?: messageProp) => void;
-  openModal: (state: boolean) => void;
+  toggleModal?: (messageProp?: messageProp) => void;
+  openModal: (state?: boolean) => void;
 }
 
 export interface openContactModelInterface {
