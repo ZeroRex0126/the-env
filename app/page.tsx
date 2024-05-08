@@ -8,7 +8,7 @@ import Footer from "./components/Footer/index";
 import Contactusform from "./components/ContactModal/Contactus";
 import Navbar from "./components/Navbar/index";
 import Ourteam from "./components/Ourteam/index";
-import MessageDialog from "./messageDialog/messageDialog";
+import MessageDialog from "./components/messageDialog/messageDialog";
 import { getWebDatas } from "./services/web-utils";
 import Services from "./components/ServicesComp";
 import Loader from "./components/Loader";

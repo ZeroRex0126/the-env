@@ -1,4 +1,4 @@
-import { messageModalPropInterface } from "../interfaces/modalProp.interface";
+import { messageModalPropInterface } from "../../interfaces/modalProp.interface";
 
 const MessageDialog = ({
   showMessage,

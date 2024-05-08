@@ -2,7 +2,7 @@
 import Slider from "react-slick";
 import React, { Component } from "react";
 import Image from "next/image";
-import {  featureWorkDat } from "@/app/interfaces/webData.interface";
+import { featureWorkDat } from "@/app/interfaces/webData.interface";
 
 // CAROUSEL DATA
 
@@ -70,7 +70,11 @@ function SamplePrevArrow(props: { className: any; style: any; onClick: any }) {
   );
 }
 
-export default function Featured({ featureWorks }: {featureWorks:featureWorkDat[]}) {
+export default function Featured({
+  featureWorks,
+}: {
+  featureWorks: featureWorkDat[];
+}) {
   const settings = {
     dots: false,
     infinite: true,
@@ -109,7 +113,6 @@ export default function Featured({ featureWorks }: {featureWorks:featureWorkDat[
   };
 
   return (
-    
     <div
       id="featured-section"
       className="bg-bgblue py-20 marginFeature bg-featured"
@@ -131,14 +134,18 @@ export default function Featured({ featureWorks }: {featureWorks:featureWorkDat[
           {featureWorks.map((items, i) => (
             <div key={i}>
               <div className="bg-transparent m-3 pb-12 my-10 rounded-3xl">
-                <a href={items.url} target="_blank"><Image
-                  src={items.imgSrc}
-                  alt="gaby"
-                  width={636}
-                  height={620}
-                  className="rounded-2xl cursor-pointer"
-                /></a>
-                
+                <a href={items.url} target="_blank">
+                  <Image
+                    src={items.imgSrc}
+                    alt="gaby"
+                    width={636}
+                    height={620}
+                    className="rounded-2xl cursor-pointer"
+                  />
+                </a>
+                <h4 className="text-end text-white">
+                  Click to View
+                </h4>
                 <div className="w-345">
                   <h4 className="sm:text-5xl font-bold sm:pt-6 text-center sm:text-start mt-10 text-white">
                     {items.heading}
