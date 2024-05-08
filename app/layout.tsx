@@ -1,5 +1,4 @@
-import Head from "next/head";
-import "./globals.css";
+import "./globals.scss";
 
 export const metadata = {
   title: "The Envelope",

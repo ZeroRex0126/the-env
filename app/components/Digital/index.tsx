@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Digital = ({ openModal }: openContactModelInterface) => {
   return (
-    <div className="mx-2">
+    <div className="mx-2" id="aboutus-section">
       <div className="mx-auto max-w-7xl px-4 my-40 pb-20 lg:px-8 bg-digital bg-sky rounded-3xl relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 my-16">
           {/* COLUMN-1 */}

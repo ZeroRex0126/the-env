@@ -40,6 +40,80 @@ html {
   scroll-behavior: smooth !important;
 }
 
+.loader-comp {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #f1f1f1;
+
+  .label {
+    position: absolute;
+    z-index: 1;
+    font-size: 60px;
+    background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .loader {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+    animation: animate 1.2s linear infinite;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loader span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+  }
+
+  .loader span:nth-child(1) {
+    filter: blur(5px);
+  }
+
+  .loader span:nth-child(2) {
+    filter: blur(10px);
+  }
+
+  .loader span:nth-child(3) {
+    filter: blur(25px);
+  }
+
+  .loader span:nth-child(4) {
+    filter: blur(50px);
+  }
+
+  .loader:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #f1f1f1;
+    border: solid white 10px;
+    border-radius: 50%;
+  }
+}
+
 .z-1 {
   z-index: -1;
 }
@@ -265,10 +339,11 @@ html {
 }
 
 .footer-icons {
+  height: 50px;
+  width: 50px;
   box-shadow: 0px 19px 28px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 50%;
-  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -416,4 +491,18 @@ html {
 }
 .text-rose {
   color: rgb(244 63 94);
+}
+
+.text-green {
+  color: rgb(22 163 74);
+  
+  // filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+
+.fill-green{
+  fill:  rgb(22 163 74);;
+}
+
+.bg-dim {
+  background: rgba(0, 0, 0, 0.5);
 }

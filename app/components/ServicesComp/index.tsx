@@ -14,11 +14,8 @@ const Services = ({serviceDat}:{serviceDat:serviceDat[]}) => {
           alt="dots-image"
           className="absolute bottom-1 -left-20"
         />
-        <h3 className="text-center text-blue text-lg tracking-widest">
-          ABOUT US
-        </h3>
         <h4 className="text-center text-4xl lg:text-65xl font-bold">
-          Know more about us.
+          Our Services
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-16 gap-x-16 lg:gap-x-32">
           {serviceDat.map((item, i) => (

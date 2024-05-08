@@ -5,11 +5,10 @@ interface NavigationItem {
 }
 
 export const navigation: NavigationItem[] = [
-  { name: "About Us", href: "#aboutus-section", current: false },
   { name: "Services", href: "#services-section", current: false },
+  { name: "About Us", href: "#aboutus-section", current: false },
+  { name: "Featured", href: "#featured-section", current: false },
   { name: "FAQ", href: "#faq-section", current: false },
-  // { name: 'Blog', href: '#blog-section', current: false },
-  // { name: 'Testimonial', href: '#testimonial-section', current: false },
 ];
 
 interface ProductType {
@@ -26,6 +25,7 @@ export const footerProducts: ProductType[] = [
       { name: "Home", href: "#home-section" },
       { name: "About Us", href: "#aboutus-section" },
       { name: "Services", href: "#services-section" },
+      { name: "Featured", href: "#featured-section" },
       { name: "FAQ", href: "#faq-section" },
     ],
   },

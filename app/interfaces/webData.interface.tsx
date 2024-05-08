@@ -13,3 +13,9 @@ export interface serviceDat {
   imgSrc: string;
   paragraph: string;
 }
+
+export interface linksDat {
+  link: string;
+  icon: string;
+  type: string;
+}
