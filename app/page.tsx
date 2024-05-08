@@ -48,7 +48,7 @@ export default function Home() {
       ? setMessageProp(messageProp)
       : setMessageProp({
           btnMessage: "Great, Chat soon!",
-          message: "Message has been sent, we will contact you shortly.",
+          message: "Message has been sent, we will get in touch shortly.",
           icon: `<svg
           class="mx-auto mb-4 text-gray-400 w-16 h-16 dark:text-gray-200"
           xmlns="http://www.w3.org/2000/svg"
